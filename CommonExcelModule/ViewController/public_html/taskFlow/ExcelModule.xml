@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ExcelModule">
+    <default-activity>decider</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__4">
+      <name>parentInterfaceName</name>
+      <value>#{pageFlowScope.parentInterfaceName}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__9">
+      <name>inputParamsMap</name>
+      <value>#{pageFlowScope.inputParamsMap}</value>
+      <class>java.util.Map</class>
+    </input-parameter-definition>
+    <managed-bean id="__1">
+      <managed-bean-name>ExcelModule</managed-bean-name>
+      <managed-bean-class>com.fouri.commonexcelmodule.view.CommonExcelModule</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="ExcelModulePage">
+      <page>/fragments/ExcelModule.jsff</page>
+    </view>
+    <task-flow-return id="back">
+      <outcome>
+        <name>back</name>
+      </outcome>
+    </task-flow-return>
+    <router id="decider">
+      <case id="__5">
+        <expression>#{pageFlowScope.parentInterfaceName eq null}</expression>
+        <outcome>page</outcome>
+      </case>
+      <case id="__6">
+        <expression>#{pageFlowScope.parentInterfaceName ne null}</expression>
+        <outcome>methodCall</outcome>
+      </case>
+      <default-outcome>page</default-outcome>
+    </router>
+    <method-call id="parentInterfaceId">
+      <method>#{bindings.parentInterfaceId.execute}</method>
+      <return-value>#{pageFlowScope.parentInterfaceId}</return-value>
+      <outcome>
+        <fixed-outcome>parentInterfaceId</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>ExcelModulePage</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>back</from-outcome>
+        <to-activity-id>back</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>decider</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>page</from-outcome>
+        <to-activity-id>ExcelModulePage</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__16">
+        <from-outcome>methodCall</from-outcome>
+        <to-activity-id>parentInterfaceId</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__17">
+      <from-activity-id>parentInterfaceId</from-activity-id>
+      <control-flow-case id="__18">
+        <from-outcome>parentInterfaceId</from-outcome>
+        <to-activity-id>ExcelModulePage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

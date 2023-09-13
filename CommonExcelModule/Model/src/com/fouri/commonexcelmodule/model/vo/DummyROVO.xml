@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DummyROVO"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  RowClass="com.fouri.commonexcelmodule.model.vo.DummyROVORowImpl">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.fouri.commonexcelmodule.model.vo.DummyROVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="InterfaceROVO1"
+    ViewObjectName="com.fouri.commonexcelmodule.model.vo.InterfaceROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="onlyParent"
+      FullName="com.fouri.commonexcelmodule.model.vo.InterfaceROVO.onlyParent"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="ActionsROVO1"
+    ViewObjectName="com.fouri.commonexcelmodule.model.vo.ActionsROVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="InterfaceROVOChild"
+    ViewObjectName="com.fouri.commonexcelmodule.model.vo.InterfaceROVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="byParentIfaceId"
+      FullName="com.fouri.commonexcelmodule.model.vo.InterfaceROVO.byParentIfaceId"/>
+    <ParameterMap>
+      <PIMap Variable="b_parentIfaceId">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[ifaceId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="xxdmInterfaceVOUploaded"
+    ViewObjectName="com.fouri.commonexcelmodule.model.vo.xxdmInterfaceVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="uploadedstatus"
+      FullName="com.fouri.commonexcelmodule.model.vo.xxdmInterfaceVO.uploadedstatus"/>
+    <ParameterMap>
+      <PIMap Variable="parentInterfaceId">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[ifaceId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="xxdmInterfaceVOValidated"
+    ViewObjectName="com.fouri.commonexcelmodule.model.vo.xxdmInterfaceVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="validatedStatus"
+      FullName="com.fouri.commonexcelmodule.model.vo.xxdmInterfaceVO.validatedStatus"/>
+    <ParameterMap>
+      <PIMap Variable="parentInterfaceId">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[ifaceId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="xxdmInterfaceVOAll"
+    ViewObjectName="com.fouri.commonexcelmodule.model.vo.xxdmInterfaceVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="parentInterfaceId">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[ifaceId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="ExportInterfaceROVO1"
+    ViewObjectName="com.fouri.commonexcelmodule.model.vo.ExportInterfaceROVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="iface_id">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[ExportInterfaceId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_ifaceId"
+    ListVOName="InterfaceROVO1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ifaceId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="ifaceName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="IfaceId"/>
+      <Item Value="IfaceName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="IfaceName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_action"
+    ListVOName="ActionsROVO1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="action"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Value"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Display"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_childIfaceId"
+    ListVOName="InterfaceROVOChild"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="childIfaceId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="childIfaceName"/>
+      <Item Value="validationProc"/>
+      <Item Value="processProc"/>
+      <Item Value="dataExtractionProc"/>
+      <Item Value="dataExtrationRecType"/>
+      <Item Value="dataExtrationTableType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="IfaceId"/>
+      <Item Value="IfaceName"/>
+      <Item Value="ValidationProc"/>
+      <Item Value="ProcessProc"/>
+      <Item Value="DataExtractionProc"/>
+      <Item Value="DataExtractionObjType"/>
+      <Item Value="DataExtractionTableType"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="IfaceName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_uploadedBatchId"
+    ListVOName="xxdmInterfaceVOUploaded"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="uploadedBatchId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="validateProcessIfaceId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BatchId"/>
+      <Item Value="IfaceId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BatchId"/>
+      <Item Value="FileName"/>
+      <Item Value="UploadDate"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="uploadedstatus"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_validatedBatchId"
+    ListVOName="xxdmInterfaceVOValidated"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="validatedBatchId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="validateProcessIfaceId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BatchId"/>
+      <Item Value="IfaceId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BatchId"/>
+      <Item Value="FileName"/>
+      <Item Value="UploadDate"/>
+      <Item Value="ValidateDate"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="validatedStatus"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_allBatchId"
+    ListVOName="xxdmInterfaceVOAll"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="allBatchId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BatchId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BatchId"/>
+      <Item Value="FileName"/>
+      <Item Value="UploadDate"/>
+      <Item Value="ValidateDate"/>
+      <Item Value="ProcessDate"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="AllBatchId"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ExportInterface"
+    ListVOName="ExportInterfaceROVO1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ExportInterface"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="ExportInterfaceExcel"/>
+      <Item Value="ExportParentInterfaceId"/>
+      <Item Value="ExportStagingTable"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="IfaceId"/>
+      <Item Value="IfaceName"/>
+      <Item Value="ParentIfaceId"/>
+      <Item Value="StagingTable"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="IfaceNameDisplay"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <SQLQuery><![CDATA[select sysdate from dual]]></SQLQuery>
+  <ViewAttribute
+    Name="Sysdate1"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    AliasName='"SYSDATE"'
+    Expression='"SYSDATE"'
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="ifaceId"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"
+    LOVName="LOV_ifaceId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="stagingTable"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="validationProc"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="processProc"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="parentIfaceId"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="action"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_action"
+    DefaultValue="D">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ifaceName"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="childIfaceId"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"
+    LOVName="LOV_childIfaceId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="childIfaceName"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="uploadedBatchId"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"
+    LOVName="LOV_uploadedBatchId">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="validatedBatchId"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"
+    LOVName="LOV_validatedBatchId">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="50"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="allBatchId"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"
+    LOVName="LOV_allBatchId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ExportInterfaceId"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="ExportInterface"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"
+    LOVName="LOV_ExportInterface">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ExportInterfaceExcel"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="ExportParentInterfaceId"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ExportStagingTable"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="validateProcessIfaceId"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="dataExtractionProc"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="dataExtrationRecType"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="dataExtrationTableType"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.fouri.commonexcelmodule.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

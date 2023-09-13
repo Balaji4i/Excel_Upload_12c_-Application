@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.2.1.12.24" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.fouri.commonexcelmodule.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/fragments/ExcelModule.jsff" usageId="com_fouri_commonexcelmodule_view_ExcelModulePageDef"/>
+    <page path="/pages/ExcelModule.jsf" usageId="com_fouri_commonexcelmodule_view_ExcelModulePageDef1"/>
+    <page path="/taskFlow/ExcelModule.xml#ExcelModule@parentInterfaceId"
+          usageId="com_fouri_commonexcelmodule_view_ExcelModule_ExcelModule_parentInterfaceIdPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_fouri_commonexcelmodule_view_ExcelModulePageDef" path="fragments.ExcelModulePageDef"/>
+    <page id="com_fouri_commonexcelmodule_view_ExcelModulePageDef1" path="pages.ExcelModulePageDef"/>
+    <page id="com_fouri_commonexcelmodule_view_ExcelModule_ExcelModule_parentInterfaceIdPageDef"
+          path="taskFlow.ExcelModule_ExcelModule_parentInterfaceIdPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="AppModuleDataControl" Package="com.fouri.commonexcelmodule.model.am"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

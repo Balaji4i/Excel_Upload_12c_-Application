@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="ExcelModulePageDef"
+                Package="fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="DummyROVO1" RangeSize="25" DataControl="AppModuleDataControl" id="DummyROVO1Iterator"/>
+    <iterator id="InterfaceROVO1Iterator" Binds="InterfaceROVO1" DataControl="AppModuleDataControl" RangeSize="25"/>
+    <iterator id="xxdmexcelstgmappingROVO1Iterator" Binds="xxdmexcelstgmappingROVO1" DataControl="AppModuleDataControl"
+              RangeSize="25"/>
+    <iterator Binds="xxdmInterfaceVO1" RangeSize="10" DataControl="AppModuleDataControl" id="xxdmInterfaceVO1Iterator"/>
+    <iterator id="xxfndLookupsView1Iterator" Binds="xxfndLookupsView1" DataControl="AppModuleDataControl"
+              RangeSize="25"/>
+    <iterator id="DynamicROVO1Iterator" Binds="DynamicROVO1" DataControl="AppModuleDataControl" RangeSize="25"/>
+    <iterator id="ExportInterfaceROVO1Iterator" Binds="ExportInterfaceROVO1" DataControl="AppModuleDataControl"
+              RangeSize="25"/>
+  </executables>
+  <bindings>
+    <list IterBinding="DummyROVO1Iterator" StaticList="false" Uses="LOV_ifaceId" id="ifaceId" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="DummyROVO1Iterator" id="ifaceId1">
+      <AttrNames>
+        <Item Value="ifaceId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummyROVO1Iterator" id="stagingTable">
+      <AttrNames>
+        <Item Value="stagingTable"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummyROVO1Iterator" id="validationProc">
+      <AttrNames>
+        <Item Value="validationProc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummyROVO1Iterator" id="processProc">
+      <AttrNames>
+        <Item Value="processProc"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummyROVO1Iterator" id="parentIfaceId">
+      <AttrNames>
+        <Item Value="parentIfaceId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="DummyROVO1Iterator" StaticList="false" Uses="LOV_action" id="action" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="DummyROVO1Iterator" id="ifaceName">
+      <AttrNames>
+        <Item Value="ifaceName"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="uploadData" RequiresUpdateModel="true" Action="invokeMethod" MethodName="uploadData"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.uploadData.dataControl.dataProvider">
+      <NamedData NDName="ifaceId" NDType="java.lang.String"/>
+      <NamedData NDName="parentIfaceId" NDType="java.lang.String"/>
+      <NamedData NDName="processedData" NDType="java.util.Map"/>
+    </methodAction>
+    <action id="Commit" DataControl="AppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action IterBinding="xxdmInterfaceVO1Iterator" id="CreateInsert"
+            InstanceName="AppModuleDataControl.xxdmInterfaceVO1" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <tree IterBinding="xxdmInterfaceVO1Iterator" id="xxdmInterfaceVO1">
+      <nodeDefinition DefName="com.fouri.commonexcelmodule.model.vo.xxdmInterfaceVO" Name="xxdmInterfaceVO10">
+        <AttrNames>
+          <Item Value="BatchId"/>
+          <Item Value="FileName"/>
+          <Item Value="Status"/>
+          <Item Value="UploadedFile"/>
+          <Item Value="UploadDate"/>
+          <Item Value="ValidateDate"/>
+          <Item Value="ProcessDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="DummyROVO1Iterator" StaticList="false" Uses="LOV_childIfaceId" id="childIfaceId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="DummyROVO1Iterator" id="childIfaceName">
+      <AttrNames>
+        <Item Value="childIfaceName"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="DummyROVO1Iterator" StaticList="false" Uses="LOV_uploadedBatchId" id="uploadedBatchId"/>
+    <listOfValues IterBinding="DummyROVO1Iterator" StaticList="false" Uses="LOV_validatedBatchId"
+                  id="validatedBatchId"/>
+    <listOfValues IterBinding="DummyROVO1Iterator" StaticList="false" Uses="LOV_allBatchId" id="allBatchId"/>
+    <attributeValues IterBinding="xxdmInterfaceVO1Iterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxdmInterfaceVO1Iterator" id="IfaceId">
+      <AttrNames>
+        <Item Value="IfaceId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="xxdmInterfaceVO1Iterator" id="BatchId">
+      <AttrNames>
+        <Item Value="BatchId"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="DummyROVO1Iterator" StaticList="false" Uses="LOV_ExportInterface" id="ExportInterface"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="DummyROVO1Iterator" id="ExportInterfaceId">
+      <AttrNames>
+        <Item Value="ExportInterfaceId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummyROVO1Iterator" id="ExportInterfaceExcel">
+      <AttrNames>
+        <Item Value="ExportInterfaceExcel"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummyROVO1Iterator" id="ExportParentInterfaceId">
+      <AttrNames>
+        <Item Value="ExportParentInterfaceId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="DummyROVO1Iterator" id="ExportStagingTable">
+      <AttrNames>
+        <Item Value="ExportStagingTable"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="refreshAndExecuteVO" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="refreshAndExecuteVO" IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.refreshAndExecuteVO.dataControl.dataProvider"
+                  ReturnName="data.AppModuleDataControl.methodResults.refreshAndExecuteVO_refreshAndExecuteVO_dataControl_dataProvider_refreshAndExecuteVO_result">
+      <NamedData NDName="ifaceId" NDType="java.lang.String"/>
+      <NamedData NDName="StagingTable" NDType="java.lang.String"/>
+      <NamedData NDName="batchId" NDType="java.lang.String"/>
+      <NamedData NDName="interfaceStatus" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="invokeProcedure" RequiresUpdateModel="true" Action="invokeMethod" MethodName="invokeProcedure"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.invokeProcedure.dataControl.dataProvider">
+      <NamedData NDName="procedureName" NDType="java.lang.String"/>
+      <NamedData NDName="batchId" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="DummyROVO1Iterator" id="validateProcessIfaceId">
+      <AttrNames>
+        <Item Value="validateProcessIfaceId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

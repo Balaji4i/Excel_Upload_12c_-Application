@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24"
+                id="ExcelModule_ExcelModule_parentInterfaceIdPageDef" Package="taskFlow" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="parentInterfaceId" RequiresUpdateModel="true" Action="invokeMethod" MethodName="parentInterfaceId"
+                  IsViewObjectMethod="false" DataControl="AppModuleDataControl"
+                  InstanceName="bindings.parentInterfaceId.dataControl.dataProvider"
+                  ReturnName="data.AppModuleDataControl.methodResults.parentInterfaceId_parentInterfaceId_dataControl_dataProvider_parentInterfaceId_result">
+      <NamedData NDName="parentInterfaceName" NDValue="#{pageFlowScope.parentInterfaceName}" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>
